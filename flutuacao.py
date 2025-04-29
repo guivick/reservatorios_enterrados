@@ -9,7 +9,7 @@ def F_solicitante(a_caixa, b_caixa, h_fundo, esp_parede, L_aba, prof_na):
 def F_resistente(a_caixa, b_caixa, h_caixa, esp_parede, h_fundo, L_aba, peso_esp_solo, cunha=0, peso_esp_concreto=25):
     peso_paredes = (2 * a_caixa + 2 * b_caixa) * esp_parede * h_caixa * peso_esp_concreto
     peso_laje = (a_caixa + 2 * esp_parede + 2 * L_aba) * (b_caixa + 2 * esp_parede + 2 * L_aba) * h_fundo * peso_esp_concreto
-    peso_solo = ((a_caixa + 2 * esp_parede + 2 * L_aba)**2 - (a_caixa + 2*esp_parede)**2) * h_caixa * peso_esp_solo
+    peso_solo = ((a_caixa + 2 * esp_parede + 2 * L_aba) * (b_caixa + 2 * esp_parede + 2 * L_aba) - (a_caixa + 2*esp_parede) * (b_caixa + 2*esp_parede)) * h_caixa * peso_esp_solo
     peso_cunha = h_caixa**2 * tan(radians(cunha)) * (2 * a_caixa + 2 * b_caixa + 8 * esp_parede) * peso_esp_solo / 2
     return peso_paredes + peso_laje + peso_solo + peso_cunha, peso_paredes, peso_laje, peso_solo, peso_cunha
 
@@ -19,14 +19,14 @@ st.title("Verificação de Flutuação da Caixa")
 st.header("Eng. Guilherme Vick")
 st.header("Parâmetros de Entrada")
 st.image("caixa.png", caption="Esquema ilustrativo da geometria", use_container_width=True)
-a = st.number_input("a_caixa (largura interna) [m]", value=36.0)
-b = st.number_input("b_caixa (comprimento interno) [m]", value=25.0)
-h_caixa = st.number_input("Altura da caixa [m]", value=15.0)
-prof_na = st.number_input("Altura do nível d'água (NA) [m]", value=15.0)
-L_aba = st.number_input("Largura da aba [m]", value=5.0)
-e_par = st.number_input("Espessura da parede [m]", value=1.5)
-h_fundo = st.number_input("Espessura da laje de fundo [m]", value=2.0)
-peso_solo = st.number_input("Peso específico do solo [kN/m³]", value=17.0)
+a = st.number_input("a_caixa (largura interna) [m]", value=36.0, min_value=0.0, step=0.5)
+b = st.number_input("b_caixa (comprimento interno) [m]", value=25.0, min_value=0.0, step=0.5)
+h_caixa = st.number_input("Altura da caixa [m]", value=15.0, min_value=0.0, step=0.5)
+prof_na = st.number_input("Altura do nível d'água (NA) [m]", value=15.0, min_value=0.0, step=0.5)
+L_aba = st.number_input("Largura da aba [m]", value=5.0, min_value=0.0, step=0.5)
+e_par = st.number_input("Espessura da parede [m]", value=1.5, min_value=0.0, step=0.1)
+h_fundo = st.number_input("Espessura da laje de fundo [m]", value=2.0, min_value=0.0, step=0.1)
+peso_solo = st.number_input("Peso específico do solo [kN/m³]", value=17.0, min_value=0.0, step=0.1)
 cunha = st.number_input("Ângulo da cunha (º)", value=0.0)
 
 if st.button("Calcular"):
