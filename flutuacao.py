@@ -22,7 +22,7 @@ st.image("caixa.png", caption="Esquema ilustrativo da geometria", use_container_
 a = st.number_input("a_caixa (largura interna) [m]", value=36.0)
 b = st.number_input("b_caixa (comprimento interno) [m]", value=25.0)
 h_caixa = st.number_input("Altura da caixa [m]", value=15.0)
-prof_na = st.number_input("Profundidade do nível d'água (NA) [m]", value=15.0)
+prof_na = st.number_input("Altura do nível d'água (NA) [m]", value=15.0)
 L_aba = st.number_input("Largura da aba [m]", value=5.0)
 e_par = st.number_input("Espessura da parede [m]", value=1.5)
 h_fundo = st.number_input("Espessura da laje de fundo [m]", value=2.0)
