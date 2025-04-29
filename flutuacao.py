@@ -16,8 +16,9 @@ def F_resistente(a_caixa, b_caixa, h_caixa, esp_parede, h_fundo, L_aba, peso_esp
 # Interface
 st.set_page_config(page_title="Verificação de Flutuação", layout="centered")
 st.title("Verificação de Flutuação da Caixa")
-
+st.header("Eng. Guilherme Vick")
 st.header("Parâmetros de Entrada")
+st.image("caixa.png", caption="Esquema ilustrativo da geometria", use_column_width=True)
 a = st.number_input("a_caixa (largura interna) [m]", value=36.0)
 b = st.number_input("b_caixa (comprimento interno) [m]", value=25.0)
 h_caixa = st.number_input("Altura da caixa [m]", value=15.0)
